@@ -18,6 +18,7 @@ typedef struct bnode* BTPTR;
 
 int max_height=0;
 
+// to know max height of tree just for printing tree purpose
 void print(BTPTR T,int h=0)
 {
     if(T==NULL)
@@ -27,10 +28,10 @@ void print(BTPTR T,int h=0)
     for(i=0;i<T->count;i++)
     {
         print(T->ptr[i],h+1);
-        // cout<<T->keys[i]<<" ";
     }
     print(T->ptr[i],h+1);
 }
+// prints all values at level "l"
 void printt(BTPTR T,int l,int h=0)
 {
     if(T==NULL)
@@ -139,28 +140,10 @@ void lvl_print(BTPTR T)
     max_height=0;
     print(T);
     for(int i=0;i<=max_height;i++)
-    {printt(T,i);cout<<endl;}
-    // queue<BTPTR> q;
-    // q.push(T);
-
-    // while(!q.empty())
-    // {
-
-    //     BTPTR P = q.front();q.pop();
-
-    //     if(P==NULL)
-    //     continue;
-
-
-    //     int i=0;
-    //     for(i=0;i<P->count;i++)
-    //     {
-    //         q.push(P->ptr[i]);
-    //         cout<<P->keys[i]<<" ";
-    //     }
-    //     q.push(P->ptr[i]);
-    //     cout<<endl;
-    // }
+    {
+        printt(T,i);
+        cout<<endl;
+    }
 }
 
 int main()
@@ -184,4 +167,6 @@ int main()
         lvl_print(T);
         cout<<"\n------------------------------\n";
     }
+
+    return 0;
 }
